@@ -1,10 +1,12 @@
 # protect the htaccess file
-<Files .htaccess>
+<Files ".htaccess">
   Require all denied
 </Files>
 
-# protect .git folder
+# protect files
 RedirectMatch 404 /\.git
+RedirectMatch 404 ".travis.yml"
+RedirectMatch 404 "deploy_key.enc"
 
 # Set file caching settings
 <IfModule mod_expires.c>
