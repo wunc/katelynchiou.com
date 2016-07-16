@@ -1,6 +1,7 @@
 language: node_js
-node_js: '0.10'
-install: echo "skip install"
+node_js: '6.1'
+install: true
+script: true
 branches:
   only: master
 addons:
