@@ -1,5 +1,3 @@
-language: node_js
-node_js: '6.1'
 install: true
 script: true
 branches:
@@ -10,7 +8,10 @@ after_success:
 - git remote add deploy $deploy_repo
 - git push --force deploy master
 before_install:
-- echo -e "Host *\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - openssl aes-256-cbc -K $encrypted_c172dbccbcce_key -iv $encrypted_c172dbccbcce_iv
   -in deploy_key.enc -out ~/.ssh/id_rsa -d
 - chmod 600 ~/.ssh/id_rsa
+env:
+  global:
+  - secure: CHJUkLQ4M/uljw9nWeXJQJVb3htN+fNvJp6t9+BsMAXmgY+IK7Eml+BEVuhjAzXSa5tcPzX9FGRBZatGLayohh2FN85lqcpcOtWBUcTbpvhoO3JUBLWeNk7NIlAx4vd1cDA+KWbBQHL2nbhLOZN9sI6B93I7T3skgocD53gVqgqZbHX19afT14ILrEy1cJuI8q+Gu7cz5aXnWHVr/i4ZSzmbpKhjvmuw/rvuggWM9wxKEDIMN/xYsANeZzSAg8QHf8tIQaHvuBnHQailIanr0hmGE/FKu340o/3kMGQsBcXJo51r2TVH3dOTAVzpNkBM/tLOJnfR+1YV2iFtKyPyrohN5vZwEp0WW5Gz/zr2+vAu9VmiOFwKQLBSii8+DHD30hxSksBil04si3Po9kjLaRgkCjkdi1KzgSmRVUc3tUfikwvVzonngyMllW5KhSDQK91LCB7KfXdnLXhySH5a3ANhPMqogimw701jP8plDYARBXJuOWr59H3zQdMWTewjfeNe7QePqtdkE7ZwDNg6WtNrw6b4x6BVMUQKn49TZ/OkHCZf1kQwro0MXiMWN7g7sLduCrGR+RET3D8aUNqz9IaNkDb59xYRNDOqhgcx/LKVjDyPDHJ8EbKTFPSBovI6OL6v1/YIVg+viuDQ4ZOy1evC014GrZhLSs43k3AWkoM=
+  - secure: SkkRZb/8RhW9N4wA+BrcYiF7uYVMbzp26CBnk9RsHU2qEi/pzrtfeKkyrcyYgu9jHhxocxLcESjAEYakEAvRBisRVEXUsTeWsdxkS9V+sRuw3++92ZKrcY5b2+VHkAg43BKjGZPErGUnHGIAKCMUvldJbzZo2ySa5AsHZE248pOWMUoA0qGIY/6ilV73X0GHtWMo39gEOJ7gO7ffPNo++S5/Pu4FK6GrDcC4urVc1v/9EaSCXsTiFsi6D7S68GaIynsrMfOEw4gya/i6T0nfKI8GVVYX7x9oK8JsvozjOGwUxeg5B6fccaWLZ9ed0cRXGsTj1aOtVm8FCGKDMNlVleqTF1xwvf1tUL0J4y63omyeYR+g/RmpQnsWPNA65+B3NOXvLD6FKD7iiPiABCA1GHszq8a7WAAd3d0B2lL4pxYQd0W/ozAfW+i4MomqQUNk63zgDOhW9D8LfFfF1JqfgDOEdq21GsjQXrCQaPlHWcL+L44WYyfg9qxOSbbKXqZ3IJvNWJcXkdAIdoWT65NpZmDjuzEcn2umERJQupFGgcErz1gMy5KejdYFfRubazTw8ygDXdsqlSHvhnHHQxjY9JmL6xgY1ASsGNV6Tw5EJU85ICF4AK7etbBk5E/F3noGxPLAVGatTHwzkIwfp26KKQE2LqWzeLBwQjQl3l+EgAU=
