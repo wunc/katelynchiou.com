@@ -4,7 +4,7 @@ branches:
   only: master
 after_success:
 - git remote add deploy $deploy_repo
-- git push --force deploy master
+- git push --force --quiet deploy master &> /dev/null
 before_install:
 - echo -e "Host ${deploy_host}\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - openssl aes-256-cbc -K $encrypted_c172dbccbcce_key -iv $encrypted_c172dbccbcce_iv
